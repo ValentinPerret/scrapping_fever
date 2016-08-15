@@ -14,22 +14,22 @@ import sys
 browser = webdriver.Firefox()
 time.sleep(2)
 
-browser.get('https://www.thewebsite.com/')
+browser.get('https://www.thewebsite.com/') #change thewebsite by the good address
 assert 'thewebsite' in browser.title
 time.sleep(2)
 elem = browser.find_elements_by_class_name('_fcn8k')  
 elem[0].click()
 elem = browser.find_element_by_name('username')
 elem.clear()
-elem.send_keys('Username')
+elem.send_keys('Username') #user name
 elem = browser.find_element_by_name('password')
 elem.clear()
-elem.send_keys('Password')
+elem.send_keys('Password') #password
 elem.send_keys(Keys.RETURN)
 
 time.sleep(2)
 
-browser.get('https://www.thewebsite.com/kyliejenner/')
+browser.get('https://www.thewebsite.com/kyliejenner/') #change thewebsite by the good address
 
 time.sleep(2)
 elem = browser.find_element_by_xpath('//div[@class="_nljxa"]/div[1]/a[1]')
