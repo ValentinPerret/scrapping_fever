@@ -38,10 +38,9 @@ def getLines(fileName):
 	f.close()
 	return elements
 
-def goToProfiles(browser, id = 0, profileFile = 'profilelist.txt'):
-	profile_names = getLines(profileFile)
+def goToProfiles(browser, profileName):
 	base_url = 'https://www.instagram.com/'
-	profile_url = base_url + profile_names[id]
+	profile_url = base_url + profileName
 	browser.get(profile_url)
 
 def findLastPicture(browser, className = '_nljxa'):
@@ -62,11 +61,12 @@ if __name__ == "__main__":
 	browser = webdriver.Firefox()
 	login(browser)
 	wait()
-	goToProfiles(browser)
-	wait()
-	findLastPicture(browser)
-	wait()
-	commenting(browser)
+	for profile in getLines('profilelist.txt'):
+		goToProfiles(browser, profile)
+		wait()
+		findLastPicture(browser)
+		wait()
+		commenting(browser)
 	browser.close()
 
 	# profileList = getLines('profilelist.txt')
